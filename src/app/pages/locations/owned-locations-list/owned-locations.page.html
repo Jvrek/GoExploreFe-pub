@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Moje lokacje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-button color="success" expand="block" [routerLink]="['/menu/locations/add']" routerDirection="forward">Dodaj lokacje</ion-button>
+    <ion-item *ngFor="let location of locations" [routerLink]="['/menu/location-popularity-details/', location.id ]" routerDirection="forward">
+      <ion-thumbnail item-left class="thumbnail">
+        <img [src]="location.images[0].url"/>
+      </ion-thumbnail>
+      {{location.name}}
+    </ion-item>
+  </ion-list>
+</ion-content>

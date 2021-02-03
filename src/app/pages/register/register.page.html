@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>GoExplore</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content>
+ 
+  <form (ngSubmit)="register()" [formGroup]="credentials">
+    <div class="input-group">
+      <ion-item>
+        <ion-label position="floating">Login</ion-label>
+        <ion-input type="text" formControlName="username"></ion-input>
+      </ion-item>
+      <div *ngIf="(username.dirty || username.touched) && username.errors" class="errors">
+        <span *ngIf="username.errors?.required">username jest wymagany</span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">Hasło</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
+        <span *ngIf="password.errors?.required">Hasło jest wymagane</span>
+        <span *ngIf="password.errors?.minlength">Minimum 6 znaków</span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email"  formControlName="email"></ion-input>
+      </ion-item>
+      <div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
+        <span *ngIf="email.errors?.required">Email jest wymagane</span>
+      </div>
+      <ion-item>
+        <ion-label position="floating">Rola</ion-label>
+        <ion-select formControlName="roles">
+          <ion-select-option value="bus">Konto biznesowe</ion-select-option>
+          <ion-select-option value="user">Użytkownik</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div *ngIf="(roles.dirty || roles.touched) && roles.errors" class="errors">
+        <span *ngIf="roles.errors?.required">Email jest wymagane</span>
+      </div>
+    </div>
+ 
+    <ion-button type="submit" expand="block" [disabled]="!credentials.valid" class="ion-no-padding ripple-parent">
+      Zarejestruj
+      <ion-ripple-effect></ion-ripple-effect></ion-button>
+ 
+  </form>
+</ion-content>

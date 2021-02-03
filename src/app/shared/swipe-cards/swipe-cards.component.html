@@ -1,0 +1,45 @@
+<div class="swipe-container" [hidden]="!filteredCards.length">
+
+  <div class="swipe-status">
+
+    <div [style.opacity]="dislike ? '1' : '0'">
+      <i class="fa fa-times fa-4x"></i>
+    </div>
+
+    <div [style.opacity]="like ? '1' : '0'">
+      <i class="fa fa-heart fa-4x"></i>
+    </div>
+
+  </div>
+
+  <div class="swipe-cards" (pan)="panHandler($event)" (panend)="panEndHandler($event)">
+
+    <div #swipeCards *ngFor="let card of filteredCards; let i = index"
+         class="swipe-card content-center" (transitionend)="shiftHandler()"
+         [ngStyle]="{zIndex: filteredCards.length - i, transform: 'scale(' + (20 - i) / 20 + ') translateY(-' + (20 * i) + 'px)'}">
+      <div>
+        <h3>{{card.name}}</h3>
+        <img #swipeCardImage [src]="card.images[0].url" [alt]="card.name" (load)="swipeCardImage.style.opacity = 1"/>
+        <div class="map-container">
+          <app-google-map [location]="card.latLng" [showDirections]="true" (onDistanceText)="onGetDistanceText($event)" (onDistanceCalculate)="onGetDistanceValue($event)"></app-google-map>
+        </div>
+        <div class="distance-text">Odległość od ciebie: {{filteredDistanceTexts[i]}}</div>
+        <ion-button [routerLink]="['/menu/locations/', card.id, 'edit' ]" routerDirection="forward">Szczegóły</ion-button>
+        
+      </div>
+      
+    </div>
+
+  </div>
+
+</div>
+
+<div class="content-center" style="height: 85%" *ngIf="!filteredCards.length">
+
+  <div style="text-align: center">
+    <h2>Przeładuj karty</h2>
+
+    <i class="fa fa-undo fa-3x" (click)="resetCard()"></i>
+  </div>
+
+</div>

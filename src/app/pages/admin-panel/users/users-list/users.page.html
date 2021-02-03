@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Lista użytkowników</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item *ngFor="let user of users" [routerLink]="['/menu/users/', user.id, 'edit' ]" routerDirection="forward">
+      <ion-label>
+        <h2>{{user.username}}</h2>
+        <h3>{{user.email}}</h3>
+        <p>Role: </p><p *ngFor="let role of user.roles">{{role.name}}</p>
+      </ion-label>
+    </ion-item>
+ </ion-list>
+</ion-content>

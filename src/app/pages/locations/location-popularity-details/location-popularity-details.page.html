@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Popularoność lokacji</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="graph-container">
+    <div id="graph"></div>
+  </div>
+  
+  <ion-button expand="block" color="success" [routerLink]="['/menu/locations/', id, 'edit']" routerDirection="forward">Edytuj lokacje</ion-button>
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Preferencje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form (ngSubmit)="submit()" [formGroup]="form">
+  <div class="input-group">
+  <ion-item>
+    <ion-label position="floating">Rodzaj aktywności</ion-label>
+    <ion-select ok-text="Zatwierdź" cancel-text="Anuluj" formControlName="activityType">
+      <ion-select-option *ngFor="let activity of activityTypes" [value]="activity">{{activity}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Budżet</ion-label>
+    <ion-input type="number"formControlName="avgCost"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Ilość osób</ion-label>
+    <ion-select ok-text="Zatwierdź" cancel-text="Anuluj" formControlName="maxPeoples">
+      <ion-select-option *ngFor="let amount of [1,2,3,4,5]" [value]="amount" >{{amount}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Odległość od Ciebie w m</ion-label>
+    <ion-input type="number" (ionChange)='onChangeDistance($event.target.value)'></ion-input>
+  </ion-item>
+</div>
+<ion-button type="submit" expand="block"  class="ion-no-padding ripple-parent">
+  Zatwierdź
+  <ion-ripple-effect></ion-ripple-effect></ion-button>
+</form>
+</ion-content>

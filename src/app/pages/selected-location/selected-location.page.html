@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Szczegoły lokacji</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card *ngIf="location">
+    <ion-slides pager="true" #slideWithNav>
+    <ion-slide *ngFor="let image of images">
+      <img src="{{image.url}}">
+    </ion-slide>
+  </ion-slides>
+    <ion-card-header>
+      <ion-card-subtitle>Będziesz tam za: {{travelTime.text}}</ion-card-subtitle>
+      <ion-card-subtitle>Średnie ceny: {{location.avgCost}}zł</ion-card-subtitle>
+      <ion-card-title>{{location.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{location.description}}
+    </ion-card-content>
+    <div class="map-container">
+      <app-google-map [location]="location.latLng" [showDirections]="true" [showMapControls]="true" 
+      (onDistanceTravelTime)="onDistanceTravelTime($event)" (onDistanceText)="onDistanceText($event)"></app-google-map>
+    </div>
+    <ion-card-content>
+    <ion-button expand="block"  class="ion-no-padding ripple-parent"  (click)="goNow();" href="https://www.google.com/maps/dir/?api=1&destination={{location.latLng.lat}},{{location.latLng.lng}}">
+      {{dateControl.dirty?'Zaplanuj':'Ruszam teraz!'}}
+      <ion-ripple-effect></ion-ripple-effect></ion-button>
+      <ion-card-subtitle>Lub zaplanuj na później</ion-card-subtitle>
+      <ion-item>
+        <ion-label>Godzina startu</ion-label>
+        <ion-datetime display-format="HH:mm" picker-format="HH:mm"  [formControl]="dateControl" minuteValues="0,15,30,45" cancelText="Anuluj" doneText="Ok"></ion-datetime>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

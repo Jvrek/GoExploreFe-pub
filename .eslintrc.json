@@ -1,0 +1,175 @@
+{
+    "root": true,
+    "ignorePatterns": [
+      "projects/**/*"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "*.ts"
+        ],
+        "plugins": [
+          "@typescript-eslint",
+          "prettier",
+          "import"
+        ],
+        "parserOptions": {
+          "project": [
+            "tsconfig.json",
+            "e2e/tsconfig.json"
+          ],
+          "createDefaultProgram": true
+        },
+        "extends": [
+          "plugin:@angular-eslint/ng-cli-compat",
+          "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+          "plugin:@angular-eslint/template/process-inline-templates"
+          
+        ],
+        "rules": {
+          "@typescript-eslint/naming-convention": [
+            "error",
+            {
+              "selector": "parameter",
+              "format": ["camelCase"]
+            }
+          ],
+  
+          //POSSIBLE ERRORS
+          "for-direction": "error",
+          "getter-return": "error",
+          "no-async-promise-executor": "error",
+          "no-await-in-loop": "error",
+          "no-compare-neg-zero": "error",
+          "no-cond-assign": "error",
+          "no-console": "error",
+          "no-constant-condition": "error",
+          "no-debugger":"error",
+          "no-dupe-args": "error",
+          "no-dupe-else-if": "error",
+          "no-dupe-keys": "error",
+          "no-duplicate-case": "error",
+          "no-empty": "error",
+          "no-empty-character-class": "error",
+          "no-ex-assign": "error",
+          "no-extra-boolean-cast": "error",
+          "no-extra-semi": "error",
+          "no-func-assign": "error",
+          "no-import-assign": "error",
+          "no-inner-declarations": "error",
+          "no-invalid-regexp": "error",
+          "no-irregular-whitespace": "error",
+          "no-loss-of-precision": "error",
+          "no-misleading-character-class": "error",
+          "no-obj-calls": "error",
+          "no-promise-executor-return": "error",
+          "no-prototype-builtins": "error",
+          "no-regex-spaces": "error",
+          "no-setter-return": "error",
+          "no-sparse-arrays": "error",
+          "no-template-curly-in-string": "error",
+          "no-unexpected-multiline": "error",
+          "no-unreachable": "error",
+          "no-unreachable-loop": "error",
+          "no-unsafe-finally": "error",
+          "no-unsafe-negation": "error",
+          "require-atomic-updates": "error",
+          "use-isnan": "error",
+          "valid-typeof": "error",
+  
+          //BEST PRACTICES
+          "accessor-pairs": "error",
+          "array-callback-return": "error",
+          "block-scoped-var": "error",
+          "complexity": ["error", 3],
+          "consistent-return": "error",
+          "curly": "error",
+          "default-case": "error",
+          "default-case-last": "error",
+          "dot-notation": "error",
+          "eqeqeq": "error",
+          "grouped-accessor-pairs": "error",
+          "guard-for-in": "error",
+          "max-classes-per-file": ["error", 1],
+          "no-case-declarations": "error",
+          "no-constructor-return": "error",
+          "no-else-return": "error",
+          "no-empty-pattern": "error",
+          "no-eq-null": "error",
+          "no-fallthrough": "error",
+          "no-floating-decimal": "error",
+          "no-global-assign": ["error", {"exceptions": ["Object"]}],
+          "no-implicit-globals": "error",
+          "no-implied-eval": "error",
+          "no-invalid-this": "error",
+          "no-lone-blocks": "error",
+          "no-loop-func": "error",
+          "no-magic-numbers": "error",
+          "no-multi-spaces": "error",
+          "no-multi-str": "error",
+          "no-new": "error",
+          "no-new-func": "error",
+          "no-new-wrappers": "error",
+          "no-nonoctal-decimal-escape": "error",
+          "no-octal": "error",
+          "no-param-reassign": "error",
+          "no-redeclare": "error",
+          "no-return-assign": "error",
+          "no-return-await": "error",
+          "no-script-url": "error",
+          "no-self-assign": "error",
+          "no-self-compare": "error",
+          "no-throw-literal": "error",
+          "no-unmodified-loop-condition": "error",
+          "no-unused-expressions": "error",
+          "no-useless-call": "error",
+          "no-useless-catch": "error",
+          "no-useless-concat": "error",
+          "no-useless-escape": "error",
+          "no-useless-return": "error",
+          "no-void": ["error", { "allowAsStatement": true }],
+          "no-with": "error",
+          "prefer-promise-reject-errors": "error",
+          "require-await": "error",
+          "wrap-iife": "error",
+          "yoda": "error",
+  
+          // VERIABLES
+          "init-declarations": "error",
+          "no-delete-var": "error",
+          "no-label-var": "error",
+          "no-restricted-globals": "error",
+          "no-shadow-restricted-names": "error",
+          "no-undef-init": "error",
+          "no-undefined": "error",
+          "no-use-before-define": "error",
+          //STYLISTIC ISSUES
+          "max-depth": ["error", 3],
+          "max-len": ["error", { "code": 120 }],
+          "max-lines": ["error", 300],
+          "max-lines-per-function": ["error", 50],
+          "max-nested-callbacks": ["error", 3],
+          "max-statements": ["error", 10],
+          "max-statements-per-line": ["error", { "max": 1 }],
+          //EXCEPTIONS
+          "no-empty-function": "off",
+          "class-methods-use-this": "off",
+          "max-params": "off",
+          "no-unused-vars": "off",
+          "no-undef":"off",
+          "no-shadow":"off"
+        }
+      },
+      {
+        "files": [
+          "*.html"
+        ],
+        "extends": [
+          "plugin:@angular-eslint/template/recommended"
+        ],
+        "rules": {
+          "@angular-eslint/no-output-on-prefix":"off"
+        }
+      }
+    ]
+  }

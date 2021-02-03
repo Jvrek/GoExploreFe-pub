@@ -1,0 +1,92 @@
+.swipe-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(173, 216, 230, 0.3);
+  //position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.swipe-status {
+  position: absolute;
+  top: 70%;
+  z-index: 100;
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+}
+
+.swipe-cards {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  //position: fixed;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.swipe-card {
+  display: inline-block;
+  width: 320px;
+  height: 80%;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.25);
+}
+
+.swipe-card .map-container {
+  width: 100%;
+  height: 180px;
+}
+
+.moving.swipe-card {
+  transition: none;
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: grabbing;
+}
+
+.swipe-status > div {
+  transition: all 0.3s ease-in-out;
+}
+
+.swipe-status i {
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  width: 100px;
+  margin-left: -50px;
+}
+
+.swipe-status img {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.swipe-status h3 {
+  margin-top: 16px;
+  font-size: 30px;
+}
+
+.fa-heart {
+  color: #f15b6c;
+}
+
+.fa-times {
+  color: #8c8c8c;
+}
+
+.content-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
